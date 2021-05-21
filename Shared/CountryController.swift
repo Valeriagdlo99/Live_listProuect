@@ -19,4 +19,8 @@ class Countrycontroller {
             CountryModel(id: UUID(), name: "China", population: "1388M")
         ]
     }
+    
+    func addCountry(NewCountry: CountryModel){
+        countries.append(NewCountry)
+    }
 }
