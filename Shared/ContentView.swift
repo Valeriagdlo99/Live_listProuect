@@ -4,7 +4,6 @@
 //
 //  Created by user186890 on 5/6/21.
 
-
 import SwiftUI
 
 struct ContentView: View {
@@ -13,24 +12,28 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-    
             List(countryController.countries) { country in
                 NavigationLink(destination: DetailView(country: country)) {
                     Text(country.name)
                 }
-                    
             }
-            
             .navigationBarTitle("Countries", displayMode: .inline)
+
+            .navigationBarItems(
+                trailing:NavigationLink(destination: AddCountryView(cityName: "Country")) {
+                    Image(systemName: "plus").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)                }
+            )
+   
         } // NavigationView
-        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-         ContentView()
+        NavigationView{
+          ContentView()
         }
+        
     }
 }
+

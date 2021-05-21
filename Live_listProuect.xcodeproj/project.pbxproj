@@ -138,6 +138,7 @@
 		36DA21B62644BF1200523F6F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				364B171F264E046D009A4115 /* AddCountryView.swift */,
 				36DA21B82644BF1200523F6F /* ContentView.swift */,
 				36A265BD264B64CA00089DB1 /* DetailView.swift */,
 				36DA21F82644C48300523F6F /* CountryModel.swift */,
@@ -148,7 +149,6 @@
 				36DA21B72644BF1200523F6F /* Live_listProuectApp.swift */,
 				36DA21B92644BF1300523F6F /* Assets.xcassets */,
 				36A265B7264B644400089DB1 /* Models */,
-				364B171F264E046D009A4115 /* AddCountryView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
