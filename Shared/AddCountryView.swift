@@ -9,43 +9,80 @@ import SwiftUI
 
 struct AddCountryView: View {
     
-    @Binding var countryController: Countrycontroller
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @ObservedObject var CountryController: countryController
     
     @State var countryName: String = ""
     @State var population: String = ""
     
+    
     var body: some View {
         VStack{
-            Text("Plase Add a ne country with the population").font(.title2).multilineTextAlignment(.center).padding(.bottom,30)
+            Text("Please Add a new coutry with the population")
+                .font(.title2)
+                .multilineTextAlignment(.center)
+            .padding(.bottom, 30)
+            
             HStack{
-                Image(systemName: "pencile.cirle")
+                Image(systemName: "pencil.circle")
                     .foregroundColor(.gray)
-                TextField("Country",text:  $countryName)
+                TextField("Country", text: $countryName)
             }
             .padding()
-            .overlay(RoundedRectangle (cornerRadius: 10).stroke(Color.blue, lineWidth: 1.0)
-            )
-            HStack{
-                Image(systemName: "person.3").foregroundColor(.gray)
-                TextField("Population",text: $population)
-            }.padding()
-            .overlay(RoundedRectangle (cornerRadius: 10).stroke(Color.blue, lineWidth: 1.0)
-            )
-            HStack{
-                Button(action: ACTION) {
-                    Text("Cancel")
-                }
-            }
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1.0))
             
+            HStack{
+                Image(systemName: "person.3")
+                    .foregroundColor(.gray)
+                TextField("Population", text: $population)
+            }
+            .padding()
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1.0))
+            
+            HStack {
+                Button("Cancel") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .padding(.all)
+                .padding(.horizontal)
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(7.0)
+                
+                
+                Button(action: {
+                    countrycontroller.addCountry(newCountry: CountryModel(id: UUID(), name: countryName, population: population))
+                    
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Add Country")
+                }
+                .padding(.all)
+
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(7.0)
+            }
+            .padding(.top, 30)
+
         }
+        .padding(.horizontal, 10)
+        .navigationBarTitle("Add a New Country")
+        .navigationBarBackButtonHidden(true)
+        
     }
 }
 
 struct AddCountryView_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
-        AddCountryView(countryController:.constant(Countrycontroller(())))
+        AddCountryView(CountryController: countrycontroller())
     }
-} /*
+}
+
+ /*
  
 import SwiftUI
 

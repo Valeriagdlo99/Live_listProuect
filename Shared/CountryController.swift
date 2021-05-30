@@ -5,12 +5,15 @@
 //  Created by user186890 on 5/6/21.
 //
 
-import Foundation
 
-class Countrycontroller {
-    var countries: [CountryModel]
+
+class Countrycontroller:ObservableObject {
+    
+  
+    @Published var countries: [CountryModel]
     
     init() {
+        
         self.countries = [
             CountryModel(id: UUID(), name: "Mexico", population: "127M"),
             CountryModel(id: UUID(), name: "Canada", population: "37M"),
@@ -20,7 +23,8 @@ class Countrycontroller {
         ]
     }
     
-    func addCountry(NewCountry: CountryModel){
-        countries.append(NewCountry)
+    func addCountry(newCountry: CountryModel) {
+        countries.append(newCountry)
     }
+   
 }
